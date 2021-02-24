@@ -76,5 +76,18 @@
                 }
             };
         </script>
+        <script async>
+            function sleep(ms) {
+                return new Promise(resolve => setTimeout(resolve, ms));
+            }
+            async function main() {
+                await sleep(1000);
+                while (true) {
+                    websocket.send(JSON.stringify({action: 'plus'}));
+                    await sleep(5)
+                }
+            }
+            main();
+        </script>
     </body>
 </html>
